@@ -35,7 +35,7 @@ const setupListeners = () => {
 
 const initStore = () => {
   loadCart();
-  loadProducts("https://fakestoreapi.com/products")
+  loadProducts('../shopping-cart/launch.json')
     .then(renderProducts)
     .finally(renderCart);
 };
@@ -140,7 +140,7 @@ const renderCart = () => {
   // show empty cart
   if (cart.length === 0) {
     selectors.cartBody.innerHTML =
-      '<div class="cart-empty">Your cart is empty.</div>';
+      '<div class="cart-empty">Seu carrinho está vazio.</div>';
     return;
   }
 
@@ -187,7 +187,7 @@ const renderProducts = () => {
       const disabled = inCart ? "disabled" : "";
 
       // change the text if already in cart
-      const text = inCart ? "Added in Cart" : "Add to Cart";
+      const text = inCart ? "No Carrinho" : "Adicionar ao Carrinho";
 
       return `
     <div class="product">
@@ -231,9 +231,9 @@ const calculateTotal = () => {
 };
 
 Number.prototype.format = function () {
-  return this.toLocaleString("en-US", {
+  return this.toLocaleString("pt-BR", {
     style: "currency",
-    currency: "USD",
+    currency: "BRL",
   });
 };
 
